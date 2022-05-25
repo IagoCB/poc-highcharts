@@ -1,15 +1,17 @@
 import React from 'react'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
+import HighchartOptions from "./highcharts.options";
+import drilldow from "highcharts/modules/drilldown";
+drilldow(Highcharts);
+HighchartOptions(Highcharts);
 
 const options = {
-    options: {
-        lang: {
-            drillUpText: '<< Voltar '
-        },
-    },
     chart: {
-        type: 'column'
+        type: 'column',
+        events: {
+            drilldown: true,
+        },
     },
     title: {
         text: 'Browsers mais populares em 2017'
@@ -98,7 +100,6 @@ const App = () => <div>
     <HighchartsReact
         highcharts={Highcharts}
         options={options}
-
     />
 </div>
 
